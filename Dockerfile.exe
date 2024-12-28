@@ -1,0 +1,4 @@
+#!/bin/awk BEGIN { system("t=$(mktemp -d); cat " ARGV[1] " > $t/Dockerfile; cd $t; docker run --rm $(docker build -q .); rm -rf $t") }
+FROM alpine
+
+ENTRYPOINT ["sh", "-c", "echo hello world"]
